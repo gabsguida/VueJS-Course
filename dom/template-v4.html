@@ -1,0 +1,33 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <!-- Uso da diretiva v-once serve para substituir o valor entre {{}}. 
+        Esse valor será substituído somente nessa tag e será uma única vez. 
+    -->
+    <!-- Dessa forma, irá primeiramente renderizar o valor de 'Usando Vue JS' e a próxima tag 
+        <p> irá renderizar o valor modificado pelo método salutation. 
+    -->
+    <!-- 
+        O Vue mantém o template em memória. Logo, a utilização do v-once resulta em uma 
+        economia de recursos que o Vue JS consome.
+     -->
+    <p v-once>{{ title }}</p>
+    <p>{{ salutation() }}</p>
+    <a v-bind:href="link">Google</a>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Usando Vue JS',
+            link: 'http://google.com.br'
+        },
+        methods: {
+            salutation(){
+                this.title = 'bom dia!!';
+                return this.title;
+            }
+        }
+    })
+</script>
