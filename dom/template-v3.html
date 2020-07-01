@@ -1,0 +1,24 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{ title }}</p>
+    <p>{{ salutation() }}</p>
+    <!-- uso da directive v-bind para interpretar as propriedades do html -->
+    <!-- Logo, a variável link, que está na Vue instance, foi interpretada pelo Vue -->
+    <a v-bind:href="link">Google</a>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Usando Vue JS',
+            link: 'http://google.com.br'
+        },
+        methods: {
+            salutation(){
+                return this.title;
+            }
+        }
+    })
+</script>
