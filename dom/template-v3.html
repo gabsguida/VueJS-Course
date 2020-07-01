@@ -22,3 +22,26 @@
         }
     })
 </script>
+
+<!-- 
+    * Conceitos:
+        - Diretivas são atributos especiais com o prefixo v-.
+        - Resumindo, diretivas são propriedades utilizadas pelo Vue
+        - Espera-se que os valores atribuídos às diretivas sejam uma simples expressão Javascript (com a excessão do v-for)
+        - O trabalho de uma diretiva é aplicar reativamente efeitos colaterais ao DOM.
+
+
+    * Exemplos de diretivas:
+        -> As chaves duplas interpretam os dados como texto simples, e não HTML. 
+        Para que você exiba HTML, utilize a diretiva v-html. 
+        Essa é uma ótima maneira que o Vue usa para proteger automaticamente contra ataques XSS.
+            Exemplo:
+                interpolação textual: <span style="color: red">Sou vermelho</span>
+                Diretiva v-html: Sou vermelho (texto em vermelho)
+        
+        -> Chaves duplas não podem ser usadas em atributos HTML. Para isso, utilize a diretiva v-bind:
+            Exemplo:
+                <div v-bind:id="dynamicId"></div>
+    
+    Fonte: https://br.vuejs.org/v2/guide/syntax.html
+ -->
