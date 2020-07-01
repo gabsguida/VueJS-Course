@@ -1,0 +1,25 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{ titulo }}</p>
+    <!-- pra retornar a string deve chamar o método -->
+    <!-- se o método for utilizado em double mustage, 
+        deve-se retornar algo passível a ser convertido em uma string -->
+    <p>{{ salutation() }}</p>
+</div>
+
+<script>
+    new Vue({
+        // essa instância do vue passa a controlar a div com id = app
+        el: '#app',
+        // acesso direto de data pelo vue
+        data: {
+            titulo: 'Usando Vue JS'
+        },
+        methods: {
+            salutation(){
+                return 'Boa semana!'
+            }
+        }
+    })
+</script>
