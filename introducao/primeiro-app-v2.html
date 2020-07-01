@@ -1,0 +1,27 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <!-- 
+    - Manipulação de eventos 
+        -> uso do v-on para escutar eventos do DOM e rodar algum método quando o evento for disparado.
+        -> Neste caso, o evento irá modificar o valor de title
+    -->
+    <input type="text" v-on:input="changeTitle" />
+    <p>{{ title }}</p>
+</div>
+
+<script>
+    new Vue({
+        // essa instância do vue passa a controlar a div com id = app
+        el: '#app',
+        data: {
+            // acesso direto de data pelo vue
+            title: 'Usando Vue JS'
+        },
+        methods: {
+            changeTitle(e){
+                this.title = e.target.value;
+            }
+        }
+    })
+</script>

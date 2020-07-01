@@ -1,0 +1,16 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{ titulo }}</p>
+</div>
+
+<script>
+    new Vue({
+        // essa instância do vue passa a controlar a div com id = app
+        el: '#app',
+        // acesso direto de data pelo vue
+        data: {
+            titulo: 'Usando Vue JS'
+        }
+    })
+</script>
