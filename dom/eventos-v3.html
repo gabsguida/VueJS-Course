@@ -1,0 +1,43 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <!-- 
+       -> É possível também criar nossos métodos passando algum parâmetro.
+       -> Nesse caso é passado o número como parâmetro que será somado.
+
+       -> Porém, fazendo isso você perde o parâmetro padrão que é o próprio event . Para usá-lo novamente,
+          passe $event.
+    
+     Em outras palavras:
+       -> Às vezes, também precisamos acessar o evento original do DOM em um manipulador.
+          Você pode passá-lo a um método usando a variável especial. (Fonte: https://br.vuejs.org/v2/guide/events.html)
+    -->
+    <button v-on:click="sum(5, $event)">Adiciona 1</button>
+    
+    <p style="font-size: 1.2rem;">Quantas vezes o botão acima foi clicado: {{ counter }}</p>
+
+    <!-- O evento mousemove dá os valores de clientX e clientY -->
+    <p style="font-size: 1.2rem;" v-on:mousemove="mouseMove">Posição do mouse: x: {{ x }} e y: {{ y }}</p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            x: 0,
+            y: 0
+        },
+        methods: {
+            sum(number, event){
+                console.log(event)
+                this.counter += number;
+            },
+            mouseMove(e){
+                // console.log(e);
+                this.x = e.clientX;
+                this.y = e.clientY;
+            }
+        }
+    })
+</script>
