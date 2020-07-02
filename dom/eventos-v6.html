@@ -1,0 +1,26 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <button v-on:click="sum">Adiciona 1</button>
+    <!-- Dentro do double mustache é possível fazer ternários, equações matemáticas -->
+    <p style="font-size: 1.2rem;"> {{ counter }}</p>
+    <p style="font-size: 1.2rem;"> Contador multiplicado por 2 = {{ counter *  2 }}</p>
+    <p style="font-size: 1.2rem;"> Contador é {{ counter > 10 ? 'maior do que 10' : 'menor do que 10' }}</p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+        },
+        methods: {
+            sum(number){
+                this.counter++;
+            }
+        }
+    })
+</script>
+
+   
+
