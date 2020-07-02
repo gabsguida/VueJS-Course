@@ -1,0 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p v-once>{{ title }}</p>
+    <p>{{ salutation() }}</p>
+    <a v-bind:href="link">Google</a>
+    
+    <hr/>
+    
+    <!-- 
+        Irá renderizar todo o conteúdo do linkHtml como string
+        Ou seja, renderizará:
+            <a href="http://google.com.br">Google</a>
+
+        Isso evita ataques XSS (Cross Site Script)
+    -->
+    <p>{{ linkHtml }}</p>
+
+    <!-- Uso da diretiva v-html para interpretar como html o conteúdo contigo em linkHtml -->
+    <p v-html="linkHtml"></p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Usando Vue JS',
+            link: 'http://google.com.br',
+            linkHtml: '<a href="http://google.com.br">Google</a>'
+        },
+        methods: {
+            salutation(){
+                this.title = 'bom dia!!';
+                return this.title;
+            }
+        }
+    })
+</script>
