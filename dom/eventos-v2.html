@@ -1,0 +1,30 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <button v-on:click="sum">Adiciona 1</button>
+    <p style="font-size: 1.2rem;">Quantas vezes o botão acima foi clicado: {{ counter }}</p>
+
+    <!-- O evento mousemove dá os valores de clientX e clientY -->
+    <p style="font-size: 1.2rem;" v-on:mousemove="mouseMove">Posição do mouse: x: {{ x }} e y: {{ y }}</p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            x: 0,
+            y: 0
+        },
+        methods: {
+            sum(){
+                this.counter++
+            },
+            mouseMove(e){
+                // console.log(e);
+                this.x = e.clientX;
+                this.y = e.clientY;
+            }
+        }
+    })
+</script>
