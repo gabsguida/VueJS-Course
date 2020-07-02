@@ -1,0 +1,30 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <!--  
+        -> Você pode usar a diretiva v-on para escutar eventos do DOM e rodar algum 
+           JavaScript quando tal evento for disparado. 
+
+        -> A lógica para muitos manipuladores de evento será mais complexa, sendo assim manter diretamente 
+           código JavaScript no valor do atributo v-on não é viável. 
+
+        -> Você também pode chamar o método passando algum parâmetro. Ou seja, podemos chamar métodos com
+           uma instrução Javascript diretamente no v-on.
+    -->
+    <button v-on:click="sum">Adiciona 1</button>
+    <p>Quantas vezes o botão acima foi clicado: {{ counter }}</p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0
+        },
+        methods: {
+            sum(){
+                this.counter++
+            }
+        }
+    })
+</script>
