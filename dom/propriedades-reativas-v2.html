@@ -1,0 +1,39 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <button v-on:click="increaseCounterButton">Aumentar</button>
+    <button v-on:click="decreaseCounterButton">Diminuir</button>
+    <p>Contador: {{ counter }}</p>
+    <!-- com computed, não há necessidade de chamar result(), basta apenas declará-lo -->
+    <p>Resultado: {{ result }} </p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            result: ''
+        },
+        computed: {
+            /* 
+            -> chamar o método no computed evita que este método seja usado pelo Vue repetidas vezes após realizar sua função.
+            -> Por exemplo, ao clicar no botão 5 vezes, a função realiza o ternário e o valor muda para 'Maior do que 5',
+                porém, se eu continuar apertando, o Vue continuará executando a função, o que nesse caso é desnecessário.
+            -> Usando o computed, o Vue guarda o resultado da função em cache e evita que ela seja chamada de forma desnecessária.
+             */
+            result(){
+                console.log('resultado chamado do metodo que foi computado')
+                return this.result = this.counter >= 5 ? 'Maior do que 5' : 'Menor do que 5';
+            }
+        },
+        methods: {
+            increaseCounterButton(){
+                this.counter++;
+            },
+            decreaseCounterButton(){
+                this.counter--;
+            }
+        }
+    })
+</script>
