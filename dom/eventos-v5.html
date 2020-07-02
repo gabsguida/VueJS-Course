@@ -1,0 +1,70 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    
+    <button v-on:click="sum(5, $event)">Adiciona 1</button>
+    
+    <p style="font-size: 1.2rem;">Quantas vezes o botão acima foi clicado: {{ counter }}</p>
+
+    <p style="font-size: 1.2rem;" v-on:mousemove="mouseMove">
+        Posição do mouse: x: {{ x }} e y: {{ y }}
+        <br />
+        <!-- Usando métodos para parar o evento -->
+        <span v-on:mousemove="stopMouseMoving">
+            Parando a propagação do evento com o método criado stopMouseMoving
+        </span>
+        <br />
+        <!-- Usando manipulador de eventos -->
+        <span v-on:mousemove.stop="">
+            Parando a propagação do evento com mousemove.stop
+        </span>
+    </p>
+    <!-- Trabalhando com eventos de teclado. Ativa o evento ao apertar enter-->
+    <input type="text" v-on:keyup.enter="showAlert" placeholder="Digite seu nome" v-model="text">
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            x: 0,
+            y: 0,
+            text: ''
+        },
+        methods: {
+            sum(number, event){
+               // console.log(event)
+                this.counter += number;
+            },
+            mouseMove(e){
+                //console.log(e);
+                this.x = e.clientX;
+                this.y = e.clientY;
+            },
+            stopMouseMoving(e){
+                e.stopPropagation();
+            },
+            showAlert(){
+                alert(`Olá, seu nome é ${this.text}`)
+            }
+        }
+    })
+</script>
+
+  <!-- Usando modificadores de evento:
+            
+        -> É muito comum precisar chamar event.preventDefault() ou event.stopPropagation() em manipuladores de eventos.
+            Embora possamos fazer isto facilmente dentro de métodos, seria melhor se os métodos pudessem lidar apenas 
+            com a lógica dos dados, em vez de ter que lidar com detalhes de eventos DOM.
+
+        ->  Para resolver esse problema, o Vue fornece modificadores de evento para v-on. 
+            É só se lembrar que modificadores são sufixos da diretiva, indicados após um ponto.
+        - Exemplos:
+            -> .stop
+            -> .prevent
+            -> .capture
+            -> .self
+            -> .once
+            -> .passive
+         -->
