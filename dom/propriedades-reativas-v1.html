@@ -1,0 +1,25 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <h1>Two-Way-Binding</h1>
+
+    <h2>{{ title }}</h2>
+
+    <label>Usando as diretivas v-bind:value e v-on:input</label>
+    <!-- Usando v-bind e v-on para atualizar o valor de titulo na instância do Vue e, por consequência, no HTML -->
+    <input type="text" v-bind:value="title" v-on:input="title = $event.target.value" />
+    
+    <br />
+    <label>Usando a diretiva v-model</label>
+    <!-- Porém, há uma maneira mais simples. Basta usar v-model, que atualiza de forma two-way-binding-->
+    <input type="text" v-model="title">
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Usando Vue JS'
+        }
+    })
+</script>
