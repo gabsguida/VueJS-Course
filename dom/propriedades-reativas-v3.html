@@ -1,0 +1,56 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <button v-on:click="increaseCounterButton">Aumentar</button>
+    <button v-on:click="decreaseCounterButton">Diminuir</button>
+    <p>Contador: {{ counter }}</p>
+    <p>Resultado: {{ result }} </p>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            result: ''
+        },
+        computed: {
+            /* 
+                propriedades computadas são síncronas
+             */
+            result(){
+                console.log('resultado chamado do metodo que foi computado')
+                return this.result = this.counter >= 5 ? 'Maior do que 5' : 'Menor do que 5';
+            }
+        },
+        watch: {
+            counter(novo, antigo){
+                console.log(novo, antigo); // no console mostra o valor atual e antigo
+                setTimeout(() => {
+                    this.counter = 0;
+                }, 2000);
+            }
+        },
+        methods: {
+            increaseCounterButton(){
+                this.counter++;
+            },
+            decreaseCounterButton(){
+                this.counter--;
+            }
+        }
+    })
+</script>
+
+<!-- 
+    -> Watchers: 
+            Resumo: Mais usado quando há performances assíncronas
+
+        While computed properties are more appropriate in most cases, 
+        there are times when a custom watcher is necessary. 
+        That’s why Vue provides a more generic way to react to data changes through the watch option.
+        This is most useful when you want to perform asynchronous or expensive operations in response 
+        to changing data.
+
+
+ -->
