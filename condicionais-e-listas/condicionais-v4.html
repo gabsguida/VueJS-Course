@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <template v-if="isLogged">
+                <p>Usuário logado: {{ name }}</p>
+                <p>Perfil: Admin</p>
+            </template>
+            <p v-else-if="anonymous">Entrando como anônimo</p>
+            <p v-else>Nenhum usuário logado</p>
+            <button @click="isLogged = !isLogged">{{ isLogged ? 'Sair' : 'Entrar'}}</button>
+            <label>Entrar como anônimo</label>
+            <input type="checkbox" v-model="anonymous">
+            <hr />
+            <!-- 
+                -> Another option for conditionally displaying an element is the v-show directive.
+
+                -> The difference is that an element with v-show will always be rendered and remain in the DOM;
+                    v-show only toggles the display CSS property of the element.
+
+                -> Note that v-show doesn’t support the <template> element, nor does it work with v-else.
+
+                -> Ou seja, o v-show só mostrará o elemento se entrar na condição. Ele insere o display: none,
+                evitando que seja excluído da árvore DOM.
+
+            -->
+            <footer v-show="isLogged">
+                Desenvolvido para você!
+            </footer>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                name: 'Maria',
+                isLogged: false,
+                anonymous: false
+            }
+        })
+    </script>
+</html>
