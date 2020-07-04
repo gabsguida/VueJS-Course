@@ -1,0 +1,82 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<style>
+    .boxes{
+        display: flex;
+        justify-content: space-around;
+    }
+    .demo{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+        text-align: center;
+        cursor: pointer;
+    }
+    .c1{
+        background-color: red;
+    }
+    .c2{
+        background-color: green;
+    }
+    .c3{
+        background-color: indigo;
+    }
+    .rotation{
+        transform: rotate(45deg);
+    }
+</style>
+
+<div id="app">
+    <div class="boxes">
+        <div 
+            class="demo" 
+            :class="applyC1" 
+            @click="applyColor = !applyColor"
+        >
+            <span>Troca para vermelho</span>
+        </div>
+        <div 
+            class="demo" 
+            :class="applyC1AndC2" 
+            @click="applyColor = !applyColor"
+        >
+            <span>Troca para vermelho e verde</span>
+        </div>
+        <div 
+            class="demo"
+            :class="[c3Color, {rotation: applyRotation}]" 
+            @click="applyColor = !applyColor"
+        >
+            <span>Rotação 45°</span>
+        </div>
+    </div>
+    <hr />
+    <input type="text" v-model="c3Color">
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            applyColor: false,
+            c3Color: 'c3',
+            applyRotation: true
+        },
+        computed: {
+            applyC1(){
+                return {
+                    c1: this.applyColor
+                }
+            },
+            applyC1AndC2() {
+                return {
+                    c1: this.applyColor,
+                    c2: !this.applyColor
+                }
+            },
+        }
+    })
+</script>
