@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 
+                -> Uso de v-if e v-else devem ser consecutivos. 
+                    O v-else só mostrará a tag dependendo do  resultado do v-if.
+                -> The directive v-if is used to conditionally render a block. 
+                    The block will only be rendered if the directive’s expression returns a truthy value.
+            -->
+            <p v-if="isLogged">Usuário logado: {{ name }}</p>
+            <p v-else>Nenhum usuário logado</p>
+            <button @click="isLogged = !isLogged">{{ isLogged ? 'Sair' : 'Entrar'}}</button>
+        </div>
+    </body>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                name: 'Maria',
+                isLogged: false
+            }
+        })
+    </script>
+</html>
