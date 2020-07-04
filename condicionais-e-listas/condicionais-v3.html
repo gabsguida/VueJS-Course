@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- 
+                -> Ao usar o v-if, os elementos serão removidos (não serão renderizados) dependendo da condição.
+
+                -> Se você não quer envolver seus elementos em uma tag que será renderizada, basta usar a
+                tag <template>.
+
+                Because v-if is a directive, it has to be attached to a single element. 
+                But what if we want to toggle more than one element? In this case we can use 
+                v-if on a <template> element, which serves as an invisible wrapper. 
+                The final rendered result will not include the <template> element.
+
+             -->
+            <template v-if="isLogged">
+                <p>Usuário logado: {{ name }}</p>
+                <p>Perfil: Admin</p>
+            </template>
+            <p v-else-if="anonymous">Entrando como anônimo</p>
+            <p v-else>Nenhum usuário logado</p>
+            <button @click="isLogged = !isLogged">{{ isLogged ? 'Sair' : 'Entrar'}}</button>
+            <label>Entrar como anônimo</label>
+            <input type="checkbox" v-model="anonymous">
+        </div>
+    </body>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                name: 'Maria',
+                isLogged: false,
+                anonymous: false
+            }
+        })
+    </script>
+</html>
