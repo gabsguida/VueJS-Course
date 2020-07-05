@@ -6,16 +6,24 @@
     </head>
     <body>
         <div id="app">
-            <h2>Names</h2>
+            <h2>Name List</h2>
 
             <ul>
-                <template v-for="(person, i) in people">
-                    <li>
-                        {{ person.name }}
-                    </li>
-                </template>
+                <!-- 
+                    O v-for, quando usado para array de objetos, suporta 3 parametros.
+                    -> É possível passar todos os valores do objeto de uma vez (1º parâmetro);
+                    -> É possível passar a propriedade que os valores se referem (2º parâmetro);
+                    -> Por fim, é possível passar o index como 3º parâmetro.
+                -->
+                <li v-for="person in people">
+                    <div v-for="(value, key, i) in person"> 
+                        {{ key }} = {{ value }}
+                    </div>
+                </li>
             </ul>
 
+            <hr />
+            <h2>Color List</h2>
             <template v-for="(color, i) in colors">
                 <!-- Renderizará apenas a repetição dos elementos abaixo -->
                 <h1>{{ color }}</h1>
@@ -47,17 +55,14 @@
 
 <!-- 
     v-for em <template>
-
         -> Similar to template v-if, you can also use a <template>
              tag with v-for to render a block of multiple elements.
              
              - Por exemplo:
-
              <ul>
                 <template v-for="item in items">
                     <li>{{ item.msg }}</li>
                     <li class="divider" role="presentation"></li>
                 </template>
             </ul>
-
  -->
