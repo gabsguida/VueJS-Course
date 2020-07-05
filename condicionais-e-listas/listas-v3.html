@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h2>Name List</h2>
+            <ul>
+                <li v-for="person in people">
+                    <div v-for="(value, key, i) in person"> 
+                        {{ key }} = {{ value }}
+                    </div>
+                </li>
+            </ul>
+
+            <hr />
+
+            <!-- 
+                é possível colocar o literal diretamente, caso você não precise usar a instância do Vue 
+            -->
+            <div v-for="n in 10">
+                Número: {{ n }}
+            </div>
+
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                people: [
+                    {name: 'Fulano', age: '26', weight: 59},
+                    {name: 'Maria', age: '20', weight: 48},
+                    {name: 'Pedrinho', age: '24', weight: 55}
+                ]
+            }
+        })
+    </script>
+</html>
