@@ -6,35 +6,24 @@
     </head>
     <body>
         <div id="app">
-            <h2>Name List</h2>
-            <ul>
-                <li v-for="person in people">
-                    <div v-for="(value, key, i) in person"> 
-                        {{ key }} = {{ value }}
-                    </div>
-                </li>
-            </ul>
-
-            <hr />
-
+            <h2>Colors</h2>
             <!-- 
-                é possível colocar o literal diretamente, caso você não precise usar a instância do Vue 
-            -->
-            <div v-for="n in 10">
-                Número: {{ n }}
-            </div>
-
+                -> É importante adicionar o key para que o Vue identifique os elementos da lista.
+                    Syntax: :key=""
+                -> Não é recomendado usar o index dado por padrão para cada lista. 
+             -->
+            <ul style="list-style: none">
+                <li v-for="(color,index) in colors" :key="color">{{ index + 1 + ')' }} {{ color }}</li>
+            </ul>
+            <button @click="colors.push('white')">Add a new color</button>
         </div>
     </body>
     <script>
         new Vue({
             el: '#app',
             data: {
-                people: [
-                    {name: 'Fulano', age: '26', weight: 59},
-                    {name: 'Maria', age: '20', weight: 48},
-                    {name: 'Pedrinho', age: '24', weight: 55}
-                ]
+                colors: ['red', 'yellow', 'green', 'blue']
+            }
             }
         })
     </script>
