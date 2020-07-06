@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body{
+    background-color: #fafafa;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Life score */
+.life-score{
+    background-color: #fff;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 6px 4px 12px -2px rgba(33,33,33,0.30);
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.life-bar{
+    width: 400px;
+    height: 20px;
+    position: relative;
+    border: 1px solid #212121;
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
+.life-bar-content{
+    height: 100%;
+    background-color: #fff;
+    position: absolute;
+    right: 0;
+}
+
+.game-status{
+    text-align: center;
+}
+
+
+    /* Action Buttons */
+.action-btns{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100px;
+    margin: 10px;
+    box-shadow: 6px 4px 12px -2px rgba(33,33,33,0.30);
+}
+
+.btn{
+    width: 100px;
+    height: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.attack-btn{
+    background-color: red;
+}
+
+.special-btn{
+    background-color: blueviolet;
+}
+
+.heal-btn{
+    background-color: darkgreen;
+}
+
+.quit-btn{
+    background-color: #212121;
+}
+
+/* Action log */
+.actions-history{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px;
+    box-shadow: 6px 4px 12px -2px rgba(33,33,33,0.30);
+    color: #fff;
+}
+
+.actions-history div{
+    width: 90%;
+    padding: 5px;
+    margin: 10px auto;
+}
+
+.history-log-player{
+    background-color: #6b9883;
+}
+
+.history-log-monster{
+    background-color: #e2716e;
+}
