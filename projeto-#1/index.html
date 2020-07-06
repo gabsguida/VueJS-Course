@@ -4,38 +4,45 @@
         <meta charset="utf-8" />
         <title>Matador de Monstros</title>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div id="app">
             <div class="life-score">
-                <div class="player">
-                    <span>Jogador</span>
+                <div class="life-score-player">
+                    <h2>Jogador</h2>
                     <div class="life-bar">
-                        <div class="life-bar-content"></div>
+                        <div class="life-bar-content" :style="{width: `${100 - healthPlayer}%`}"></div>
                     </div>
-                    <span class="life-percent"></span>
+                    <span class="life-percent">{{ healthPlayer }}%</span>
                 </div>
-                <div class="monster">
-                    <span>Monstro</span>
+                <div class="life-score-player">
+                    <h2>Monstro</h2>
                     <div class="life-bar">
-                        <div class="life-bar-content"></div>
+                        <div 
+                            class="life-bar-content" 
+                            :style="{width: `${100 - healthMonster}%`}"
+                        ></div>
                     </div>
-                    <span class="life-percent"></span>
+                    <span class="life-percent">{{ healthMonster }}%</span>
                 </div>
             </div>
-            <div class="actions-btns">
-                <button>Ataque</button>
-                <button>Ataque Especial</button>
-                <button>Curar</button>
-                <button>Desistir</button>
+            <div class="game-status">
+                <h3 v-if="!isGameOver">Escolha uma opção</h3>
+                <h3 v-else-if="isPlayerWinner">Parabéns, você ganhou!</h3>
+                <h3 v-else>Game Over</h3>
+            </div>
+            <div class="action-btns">
+                <button class="attack-btn btn" @click="playerAttack">Ataque</button>
+                <button class="special-btn btn" @click="specialAttack">Ataque Especial</button>
+                <button class="heal-btn btn" @click="heal">Curar ({{ healQuantity }})</button>
+                <button class="quit-btn btn" @click="quit">Desistir</button>
             </div>
             <div class="actions-history">
-                <ul>
-                    <li></li>
-                </ul>
+                <template v-for="history in actionsHistory">
+                    <div :class="`history-log-${history.type}`">{{ history.message }}</div>
+                </template>
             </div>
-
         </div>
     </body>
     <script src="app.js"></script>
